@@ -26,12 +26,12 @@ public class Magicien extends Personnage {
         int choix = 0;
         do {
             System.out.println("Modification du :\n" +
-                    "1.Nom :\n" +
-                    "2.Vie :\n" +
-                    "3.Attaque :\n" +
-                    "4.Sort :\n"+
-                    "5.Dégat Sort \n"+
-                    "6.Quittter :\n");
+                    "1.Nom :" + this.getNom()+
+                    "\n2.Vie : " + this.getVie()+
+                    "\n3.Attaque : " +this.getAttaque()+
+                    "\n4.Sort : "+ this.sorts.get(0).getNom()+
+                    "\n5.Dégat Sort : "+this.sorts.get(0).getAttaque()+
+                    "\n6.Quittter :\n");
             choix=input.nextInt();
             input.nextLine();
             if (choix ==1){

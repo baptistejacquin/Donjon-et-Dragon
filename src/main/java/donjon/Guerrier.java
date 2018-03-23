@@ -21,12 +21,12 @@ public class Guerrier extends Personnage{
         int choix = 0;
         do {
             System.out.println("Modification du :\n" +
-                    "1.Nom :\n" +
-                    "2.Force :\n" +
-                    "3.Niveau de vie:\n" +
-                    "4.Arme :\n"+
-                    "5.Dégat de l'arme\n"+
-                    "6.Quitter");
+                    "1.Nom : " + this.getNom()+
+                    "\n2.Force : " + this.getForce()+
+                    "\n3.Niveau de vie : " + this.getNiveau()+
+                    "\n4.Arme : "+ this.armes.get(0).getNom()+
+                    "\n5.Dégat de l'arme : "+ this.armes.get(0).getAttaque()+
+                    "\n6.Quitter");
             choix=input.nextInt();
             input.nextLine();
             if (choix ==1){
