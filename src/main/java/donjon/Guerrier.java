@@ -1,23 +1,20 @@
 package main.java.donjon;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The type Guerrier.
+ */
 public class Guerrier extends Personnage{
     private String image;
-    private String type = " Magicien";
+    private String type = " Guerrier";
     private int niveau;
     private int force;
-
-    public void affiche(){
-        System.out.println("Type :");
-        System.out.println("Guerrier");
-        System.out.println("Nom :");
-        System.out.println(this.nom);
-        System.out.println("Niveau :");
-        System.out.println(this.niveau);
-        System.out.println("Force :");
-        System.out.println(this.force);
-    }
+    /**
+     * The Armes.
+     */
+    protected ArrayList<Arme> armes = new ArrayList<>();
 
     public void  modif() {
         Scanner input = new Scanner(System.in);
@@ -26,8 +23,10 @@ public class Guerrier extends Personnage{
             System.out.println("Modification du :\n" +
                     "1.Nom :\n" +
                     "2.Force :\n" +
-                    "3.Niveau :\n" +
-                    "4.Quittter :\n");
+                    "3.Niveau de vie:\n" +
+                    "4.Arme :\n"+
+                    "5.Dégat de l'arme\n"+
+                    "6.Quitter");
             choix=input.nextInt();
             input.nextLine();
             if (choix ==1){
@@ -37,46 +36,101 @@ public class Guerrier extends Personnage{
                 System.out.println("Choisit la Force :");
                 this.setForce(input.nextInt());
             }else if (choix==3){
-                System.out.println("Choisit son Niveau :");
-                this.setNiveau(input.nextInt());
+                System.out.println("Choisit son Niveau de vie:");
+                int newpv = input.nextInt();
+                if (newpv > 100){
+                    newpv =100;
+                    this.setNiveau(newpv);
+                }else if (newpv < 0){
+                    newpv = 0;
+                    this.setNiveau(newpv);
+                }else {
+                    this.setNiveau(newpv);
+                }
+            }else if (choix ==4){
+                System.out.println("Choisit Son arme :");
+                this.armes.get(0).setNom(input.nextLine());
+            }else if (choix ==5){
+                System.out.println("Choisit le dégat de l'arme :");
+                this.armes.get(0).setAttaque(input.nextInt());
             }
-        }while (choix != 4);
+        }while (choix != 6);
     }
 
     public String toString(){
-        return "Type :"+type+super.toString()+ "\nNiveau : "+ niveau + "\nForce : "+ force;
+        return "\nType :"+type+super.toString()+ "\nNiveau : "+ niveau + "\nForce : "+ force +"\nArme : "+armes.get(0).getNom()+"\nDégat arme : "+armes.get(0).getAttaque()+"\n\n";
     }
 
+    /**
+     * Gets force.
+     *
+     * @return the force
+     */
     public int getForce() {
         return force;
     }
 
+    /**
+     * Sets force.
+     *
+     * @param force the force
+     */
     public void setForce(int force) {
         this.force = force;
     }
 
+    /**
+     * Gets niveau.
+     *
+     * @return the niveau
+     */
     public int getNiveau() {
 
         return niveau;
     }
 
+    /**
+     * Sets niveau.
+     *
+     * @param niveau the niveau
+     */
     public void setNiveau(int niveau) {
         this.niveau = niveau;
     }
 
+    /**
+     * Gets image.
+     *
+     * @return the image
+     */
     public String getImage() {
 
         return image;
     }
 
+    /**
+     * Sets image.
+     *
+     * @param image the image
+     */
     public void setImage(String image) {
         this.image = image;
     }
 
+    /**
+     * Gets nom.
+     *
+     * @return the nom
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * Sets nom.
+     *
+     * @param nom the nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
